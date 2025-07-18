@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuro ARG Puzzle</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: url('https://raw.githubusercontent.com/StiXUploads/KuroPuzzle/main/background.png') no-repeat center center;
+      background-size: cover;
+    }
+
+    .piece {
+      transform-origin: center center;
+    }
+
+    .controls {
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .control-btn {
+      background: rgba(255,255,255,0.8);
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Dial 1 -->
+    <div style="position: absolute; top: 250px; left: 91px; text-align: center;">
+      <img src="https://raw.githubusercontent.com/StiXUploads/KuroPuzzle/main/dail1.png" class="piece" id="piece1" style="width: 570px;" />
+      <div class="controls">
+        <button class="control-btn" onclick="rotate('piece1', -90)">⟲</button>
+        <button class="control-btn" onclick="rotate('piece1', 90)">⟳</button>
+      </div>
+    </div>
+
+    <!-- Dial 2 -->
+    <div style="position: absolute; top: 250px; left: 680px; text-align: center;">
+      <img src="https://raw.githubusercontent.com/StiXUploads/KuroPuzzle/main/dail2.png" class="piece" id="piece2" style="width: 570px;" />
+      <div class="controls">
+        <button class="control-btn" onclick="rotate('piece2', -90)">⟲</button>
+        <button class="control-btn" onclick="rotate('piece2', 90)">⟳</button>
+      </div>
+    </div>
+
+    <!-- Dial 3 -->
+    <div style="position: absolute; top: 250px; left: 1310px; text-align: center;">
+      <img src="https://raw.githubusercontent.com/StiXUploads/KuroPuzzle/main/dail3.png" class="piece" id="piece3" style="width: 570px;" />
+      <div class="controls">
+        <button class="control-btn" onclick="rotate('piece3', -90)">⟲</button>
+        <button class="control-btn" onclick="rotate('piece3', 90)">⟳</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const rotations = {
+      piece1: 0,
+      piece2: 0,
+      piece3: 0
+    };
+
+    function rotate(pieceId, angle) {
+      rotations[pieceId] += angle;
+      const piece = document.getElementById(pieceId);
+      piece.style.transform = `rotate(${rotations[pieceId]}deg)`;
+    }
+  </script>
+</body>
+</html>
